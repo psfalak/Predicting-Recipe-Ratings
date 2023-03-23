@@ -62,7 +62,7 @@ Realizing this, we decided to tune our model.
 
 To start our tuning, we decided to feature engineer two new features: Date Attributes and Tags.
 
-#### Feature Engineered #1: Date Attributes
+### Feature Engineered #1: Date Attributes
 
 In our original dataset, we had a 'recipe_submitted_date' column which contained the date of the recipe. We decided to create three different columns from this one column: 'submitted_year', 'submitted_month', and 'submitted_dow'. We believed that the info in these columns would be more valuable since it could be generalized easier than the date. Here's an example of how the code looked like to do this:
 
@@ -72,7 +72,7 @@ model_df['submitted_year'] = model_df['recipe_submitted_date'].dt.year
 After performing similar code to extract the month and the data, running 'model_df.shape' would be '(219231, 26),' adding 3 new columns.
 
 
-#### Feature Engineered #2: Tags
+### Feature Engineered #2: Tags
 
 Another column that we neglected in our original dataset was the tags. Since this is a list of tag variables, we are going to one-hot-encode each tag into their own columns respectively. We believed that there could be some tags that were more common in higher rating scores (ex. 'dessert' could imply a higher rating).
 
@@ -87,7 +87,7 @@ We then merged this dataframe with our main dataframe, 'model_df'. This resulted
 
 **Note:** We tried to do a similar approach with ingredients, but there were over 11,000 different ingredients in the dataframe. Giving each ingredient its own column seemed too excessive, so we decided to carry on to our model building.
 
-#### Decision Tree Tuning
+### Decision Tree Tuning
 
 Once we finished engineering these columns, we decided to tune our decision tree. We created a preprocessor which consisted of our baseline preprocessor and a 'OneHotEncoder' for the 'submitted_year', 'submitted_month', and 'submitted_dow' columns. We then decided to run grid search on 3 different hyperparameters: 'max_depth', 'min_samples_split', and 'criterion'. We ended up having a total of 112 different combinations of hyperparameters. After setting the amound of k-folds we want to 5, we would be testing our model on 560 different decision trees!
 
