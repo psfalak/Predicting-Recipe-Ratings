@@ -91,7 +91,10 @@ We then merged this dataframe with our main dataframe, 'model_df'. This resulted
 
 Once we finished engineering these columns, we decided to tune our decision tree. We created a preprocessor which consisted of our baseline preprocessor and a 'OneHotEncoder' for the 'submitted_year', 'submitted_month', and 'submitted_dow' columns. We then decided to run grid search on 3 different hyperparameters: 'max_depth', 'min_samples_split', and 'criterion'. We ended up having a total of 112 different combinations of hyperparameters. After setting the amound of k-folds we want to 5, we would be testing our model on 560 different decision trees!
 
-We identified the best hyperparameters to be '{'criterion': 'gini', 'max_depth': 3, 'min_samples_split': 1622}'.
+We identified the best hyperparameters to be '{'criterion': 'gini', 'max_depth': 3, 'min_samples_split': 1622}'. Here's how the graph looked:
+
+<iframe src="assets/tree.png" width=800 height=600 frameBorder=0></iframe>
+
 
 Now all we had to do was create a final model using this decision tree and the hyperparameters. After creating our and fitting it on the training data, we took the accuracy score for both the training set and the testing set. For the training set, received around a 75.08% score, while our testing received a 75.07% score. 
 
