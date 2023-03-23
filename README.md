@@ -101,13 +101,19 @@ Although the accuracy of our training set decreased, our new model was better th
 
 ## Fairness Analysis
 
-Now that we have our final model trained and optimized, let's perform a fairness analysis test. To do so, we will try to determine if the model performs worse in a group X than it does for group Y. That being said, we think it would be worthwhile to conduct a fairness analysis on healthy and non-healthy groups, using the difference in RMSE ('healthy' - 'unhealthy') as the test statistic . More specifically, we can divide our data into group X(recipes with less than or equal to 1000 calories) and group Y(recipes greate than 1000 calories) in order to perform a hypothesis test:
+Now that we have our final model trained and optimized, let's perform a fairness analysis test. To do so, we will try to determine if the model performs worse in a group X than it does for group Y. That being said, we think it would be worthwhile to conduct a fairness analysis on healthy and non-healthy groups, using the difference in RMSE ('healthy' - 'unhealthy') as the test statistic . More specifically, we can divide our data into group X(recipes with less than or equal to 1000 calories) and group Y (recipes greate than 1000 calories) in order to perform a hypothesis test:
 
 **Null Hypothesis:** Our model is fair. The RMSE for healthy and unhealthy recipes are roughly the same, and any differences are due to random chance.
 
 **Alternative Hypothesis:** Our model is unfair. The RMSE for unhealthy recipes is higher than the RMSE for healthier recipes.
 
-After calculating our observed difference to be around -.0598, we ran a permutation test by shuffling our predictions around to simulate under the null hypothesis.
+We calculated our observed difference to be around -.0598.
+
+<iframe src="assets/fairness_healthy.html" width=800 height=600 frameBorder=0></iframe>
+
+We then ran a permutation test by shuffling our predictions around to simulate under the null hypothesis.
+
+<iframe src="assets/p_val.html" width=800 height=600 frameBorder=0></iframe>
 
 After running the permutation test, we got a p-value of 1.0, stating that we should fail to reject our null hypothesis and there isn't clear evidence from this specific test that our model is unfair.
 
