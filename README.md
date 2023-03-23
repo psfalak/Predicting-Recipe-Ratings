@@ -52,7 +52,7 @@ baseline_pipeline = Pipeline([
 ])
 ```
 
-After creating the pipeline, we decided to run a 'train_test_split' to get testing data for our model. After fitting the pipeline with the training data, we got the score of our model. We called '.score' with the training and testing data. The training data yieled a score of 1.0, or 100%. On the other hand, our testing score was drastically lower, achieving a score of about 60%. This suggests that we are overfitting the model on our training dataset, which could likely be caused by the fact we did not specify a max depth of for the 'DecisionTreeClassifier.' 
+After creating the pipeline, we decided to run a 'train_test_split' to get testing data for our model. After fitting the pipeline with the training data, we got the score of our model. We called '.score' with the training and testing data. The training data yieled a score of 99.99%. On the other hand, our testing score was drastically lower, achieving a score of about 59%. This suggests that we are overfitting the model on our training dataset, which could likely be caused by the fact we did not specify a max depth of for the 'DecisionTreeClassifier.' 
 
 Realizing this, we decided to tune our model.
 
@@ -93,10 +93,10 @@ Once we finished engineering these columns, we decided to tune our decision tree
 
 We identified the best hyperparameters to be '{'criterion': 'gini', 'max_depth': 3, 'min_samples_split': 1622}'. Here's how the graph looked:
 
-<iframe src="assets/tree.png" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/tree.png" width=1000 height=600 frameBorder=0></iframe>
 
 
-Now all we had to do was create a final model using this decision tree and the hyperparameters. After creating our and fitting it on the training data, we took the accuracy score for both the training set and the testing set. For the training set, received around a 75.08% score, while our testing received a 75.07% score. 
+Now all we had to do was create a final model using this decision tree and the hyperparameters. After creating our and fitting it on the training data, we took the accuracy score for both the training set and the testing set. For the training set, received around a 75% score, while our testing received a 75.37% score. 
 
 Although the accuracy of our training set decreased, our new model was better than our baseline model. We were able to eliminate the overfitting in the training, which allowed to us to receive a higher score when running the model on the test data.
 
