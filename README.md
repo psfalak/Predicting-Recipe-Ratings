@@ -1,7 +1,4 @@
-# Predicting_Recipe_Ratings
-
-
-# Recipe and Ratings Analysis
+# Predicting Recipe Ratings
 
 by Patrick Salsbury (psalsbury@ucsd.edu) & Pukhraj Falak (pfalak@ucsd.edu)
 
@@ -12,7 +9,7 @@ by Patrick Salsbury (psalsbury@ucsd.edu) & Pukhraj Falak (pfalak@ucsd.edu)
 
 ## Problem Identification
 
-In this project, our goal was to create a model that accurately predicts the rating of certain recipes given information about the recipe. We decided to use the rating column because we felt like that was the most important piece of data in the entire dataset, as it was a solid incator of whether someone would want to try out the recipe or not. After merging the recipes and ratings dataset from Food.com, we had a variety of information to use inclduing but not limited to the cooking minutes, number of steps (n_steps), number of ingredients (n_ing), and nutrition info like calories, protein, soduim, etc. Since the rating column consisted of values that ranged from 1-5, we decided to use multiclass classification to predict the rating. To evaluate our model, we decided to use the accuracy score. After observing the distribution of the ratings in our dataset, we found that over 77% of the ratings given were 5-stars! This indicated that there was a major inbalance in the distribution of ratings amongst the five possible ratings. Due to this imbalance and the fact that were were performing multiclass classification, we believed that accuracy would be the best metric.
+In this project, our goal was to create a model that accurately predicts the rating of certain recipes given information about the recipe. We decided to use the rating column because we felt like that was the most important piece of data in the entire dataset, as it was a solid incator of whether someone would want to try out the recipe or not. After merging the recipes and ratings dataset from Food.com, we had a variety of information to use including but not limited to the cooking minutes, number of steps (n_steps), number of ingredients (n_ing), and nutrition info like calories, protein, soduim, etc. Since the rating column consisted of values that ranged from 1-5, we decided to use multiclass classification to predict the rating. To evaluate our model, we decided to use the accuracy score. After observing the distribution of the ratings in our dataset, we found that over 77% of the ratings given were 5-stars! This indicated that there was a major inbalance in the distribution of ratings amongst the five possible ratings. Due to this imbalance and the fact that we were performing multiclass classification, we believed that accuracy would be the best metric.
 
 ---
 
@@ -64,7 +61,7 @@ To start our tuning, we decided to feature engineer two new features: Date Attri
 
 ### Feature Engineered #1: Date Attributes
 
-In our original dataset, we had a 'recipe_submitted_date' column which contained the date of the recipe. We decided to create three different columns from this one column: 'submitted_year', 'submitted_month', and 'submitted_dow'. We believed that the info in these columns would be more valuable since it could be generalized easier than the date. Here's an example of how the code looked like to do this:
+In our original dataset, we had a 'recipe_submitted_date' column which contained the date of the recipe. We decided to create three different columns from this one column: 'submitted_year', 'submitted_month', and 'submitted_dow'. We believed that the info in these columns would be more valuable since it could be generalized easier than the date. We also thought there could exist some pattern in the ratings for a given month/year. For example, in holiday season months, ratings might be higher because people's mood in during these months are elevated. Here's an example of how the code looked like to do this:
 
 ```py
 model_df['submitted_year'] = model_df['recipe_submitted_date'].dt.year
